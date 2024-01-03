@@ -30,23 +30,19 @@ document.querySelector(".add button").addEventListener("click", function () {
             activeButton.classList.remove("pressed");
         }, 100);
 
-        for (let i = 0; i < list.querySelectorAll("li").length; i++) {
-            (function (currentTask) {
-                list.querySelectorAll("li img")[i].addEventListener("click", function () {
-                    currentTask.remove();
-                    saveData();
-                });
+        (function (currentTask, checkbox) {
+            img.addEventListener("click", function () {
+                currentTask.remove();
+                saveData();
+            });
 
-                // Separate closure for the x event listener
-                (function (checkbox) {
-                    checkbox.addEventListener("change", function () {
-                        strikeThrough(currentTask, this.checked);
-                        saveData();
-                    });
-                })(x);
-            })(this.task);
+            checkbox.addEventListener("change", function () {
+                strikeThrough(currentTask, this.checked);
+                saveData();
+            });
+        })(task, x);
         }
-    }
+    
 });
 
 // Rest of the code remains unchanged
