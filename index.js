@@ -44,7 +44,7 @@ document.querySelector(".add button").addEventListener("click", function () {
                         saveData();
                     });
                 })(x);
-            })(task);
+            })(this.task);
         }
     }
 });
